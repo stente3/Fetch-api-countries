@@ -1,0 +1,17 @@
+.navegation, .dark-mode{
+    display: flex;
+}
+.navegation{
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0px 2px 12px 0px rgba(132,132,132,0.19);
+    background-color: $white;
+}
+.dark-mode{
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container{
+    height: 10rem;
+    background-color: $very-light-gray;
+}
