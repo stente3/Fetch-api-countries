@@ -4,14 +4,23 @@
 .navegation{
     justify-content: space-between;
     padding: 1rem;
-    box-shadow: 0px 2px 12px 0px rgba(132,132,132,0.19);
+    box-shadow: 0px 0px 10px 0px rgba(133,133,133,0.2);
     background-color: $white;
 }
 .dark-mode{
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 11rem;
+}
+.dark-mode__img, .dark-mode__paragraph{
+    cursor: pointer;
 }
 .container{
     height: 10rem;
     background-color: $very-light-gray;
+}
+@include tablet{
+    .navegation{
+        padding: 1rem 5%;
+    }
 }

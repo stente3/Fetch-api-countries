@@ -1,0 +1,26 @@
+{
+  "name": "fetch-api-countries",
+  "version": "1.0.0",
+  "description": "Fetch API countries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w source/sass/ -o public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stente3/fetch-api-countries.git"
+  },
+  "keywords": [
+    "Fetch-API"
+  ],
+  "author": "Stente3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stente3/fetch-api-countries/issues"
+  },
+  "homepage": "https://github.com/stente3/fetch-api-countries#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
