@@ -9,8 +9,8 @@
 }
 .dark-mode{
     align-items: center;
-    justify-content: space-between;
-    width: 11rem;
+    justify-content: space-evenly;
+    width: 10.2rem;
 }
 .dark-mode__img, .dark-mode__paragraph{
     cursor: pointer;
@@ -21,6 +21,11 @@
 }
 @include tablet{
     .navegation{
-        padding: 1rem 5%;
+        padding: 1rem 2.5%;
+    }
+}
+@include desktop{
+    .navegation{
+        padding: 1rem 7%;
     }
 }
