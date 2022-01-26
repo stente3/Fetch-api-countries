@@ -1,0 +1,13 @@
+.filter-section{
+    display: flex;
+}
+.filter-section__searcher{
+    all: unset;
+    background: $white url("../assets/img/search-white-mode.svg") no-repeat;
+    background-position-y: center;
+    background-position-x: 1rem;
+    margin: 2rem auto;
+    padding: 1rem 0 1rem 4rem;
+    width: 85%;
+    @include borders;
+}
