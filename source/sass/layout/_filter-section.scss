@@ -25,9 +25,7 @@
     position: relative;
 
     .filter__container{
-        max-width: 30rem;
-        min-width: 20rem;
-        width: 65%;
+        @include options-filter;
     }
 }
 .filter__defaul-option{
@@ -35,6 +33,9 @@
     position:relative;
     cursor: pointer;
     @include borders;
+    .option{
+        padding: 1.6rem;
+    }
 }
 .filter__defaul-option:before{
     content: "";
@@ -61,13 +62,16 @@
 }
 .active .select_ul{
     display:block;
+    position: absolute;
+    padding: 0.5rem 1rem;
+    @include options-filter;
 }
  
 
 /* Utilities */
 .option{
     list-style: none;
-    padding: 1.5rem;
+    padding: 1rem;
     p{
         cursor: pointer;
         user-select: none;
@@ -76,5 +80,23 @@
 .list{
     list-style: none;
     padding-left: 5%;
-    margin: .5rem auto;
+    margin: .2rem auto;
+}
+/* Tablet design */
+@include tablet{
+    .filter-section{
+        flex-direction: row;
+        align-items: center;
+        @include general-padding-tablet;
+    }
+    .filter{
+        display: flex;
+        justify-content: right;
+    }
+}
+/* Desktop design */
+@include desktop{
+    .filter-section{
+        @include general-padding-desktop;
+    }
 }

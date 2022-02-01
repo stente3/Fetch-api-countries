@@ -14,3 +14,17 @@
 @mixin borders{
     border-radius: 5px;
 }
+
+@mixin options-filter{
+    max-width: 30rem;
+    min-width: 20rem;
+    width: 60%;
+}
+
+@mixin general-padding-tablet{
+    padding: 1rem 2.5%;
+}
+
+@mixin general-padding-desktop{
+    padding: 1rem 7%;
+}

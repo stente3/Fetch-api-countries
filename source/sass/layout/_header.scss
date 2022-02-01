@@ -19,11 +19,15 @@
     height: 10rem;
     background-color: $very-light-gray;
 }
+
+/* Tablet design */
 @include tablet{
     .navegation{
         padding: 1rem 2.5%;
     }
 }
+
+/* Desktop design */
 @include desktop{
     .navegation{
         padding: 1rem 7%;
