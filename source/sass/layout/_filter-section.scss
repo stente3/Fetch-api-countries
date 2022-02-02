@@ -82,6 +82,7 @@
     padding-left: 5%;
     margin: .2rem auto;
 }
+
 /* Tablet design */
 @include tablet{
     .filter-section{
@@ -94,6 +95,7 @@
         justify-content: right;
     }
 }
+
 /* Desktop design */
 @include desktop{
     .filter-section{
