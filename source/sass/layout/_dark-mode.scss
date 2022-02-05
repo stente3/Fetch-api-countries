@@ -1,0 +1,38 @@
+/* Body */
+.body-dark{
+    background-color: $very-dark-blue;
+}
+/* Navegation Bar */
+.body-dark .navegation{
+    background-color: $dark-blue;
+    box-shadow: none;
+    .navegation__header, div .dark-mode__paragraph{
+        color: $white;
+    }
+}
+
+/* Searcher Section */
+.filter-section--dark{
+    .filter-section__searcher{
+        background-image: url("../assets/img/search-dark-mode.svg");
+        background-color: $dark-blue;
+        box-shadow: none;
+    }
+    .filter__default-option{
+        background-color: $dark-blue;
+    }
+    .option{
+        color: $white;
+        font-weight: $semi-bold;
+    }
+    ::placeholder{
+        font-weight: $semi-bold;
+        color: $white;
+    }
+    .select_ul{
+        background-color: $dark-blue;
+    }
+    .filter__default-option:before{
+        border-color: transparent transparent #FFF #FFF;
+    }
+}
