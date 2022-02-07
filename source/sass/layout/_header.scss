@@ -10,10 +10,11 @@
 .dark-mode{
     align-items: center;
     justify-content: space-evenly;
-    width: 10.2rem;
+    width: 10.5rem;
 }
 .dark-mode__img, .dark-mode__paragraph{
     cursor: pointer;
+    user-select: none;
 }
 .container{
     height: 10rem;

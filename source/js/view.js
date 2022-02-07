@@ -1,7 +1,7 @@
 // Filter Section
 let filter = document.querySelector(".filter");
 let options = document.querySelectorAll(".option");
-let defaulOption = document.querySelector(".filter__defaul-option .option p");
+let defaultOption = document.querySelector(".filter__default-option .option p");
 
 filter.addEventListener("click", ()=> {
     filter.classList.toggle("active");
@@ -9,18 +9,33 @@ filter.addEventListener("click", ()=> {
 
 options.forEach((e) =>{
     e.addEventListener("click", (e) =>{
-        defaulOption.textContent = e.target.textContent;
+        defaultOption.textContent = e.target.textContent;
     })
 })
 
 // Dark Mode
 let body = document.querySelector(".body");
+let filterSection = document.querySelector(".filter-section");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
+let darkModeImage = document.querySelector(".dark-mode__img");
 
 buttonMode.forEach(element =>{
     element.addEventListener("click", (e) =>{
-        console.log(e.target);
+        darkMode();
     })
 })
+function darkMode(){
+    filterSection.classList.toggle("filter-section--dark");
+    body.classList.toggle("body-dark");
+    darkImage();
+}
+function darkImage(){
+    if( !!body.classList.contains("body-dark") === true ){
+        darkModeImage.src = "./public/assets/img/moon-dark-mode.svg";
+    }
+    else{
+        darkModeImage.src = "./public/assets/img/moon-white-mode.svg";
+    }
+}
 
 

@@ -16,6 +16,7 @@
     @include borders;
     box-shadow: 0px 0px 10px 0px rgba(133,133,133,0.2);
     box-sizing: border-box;
+    user-select: none;
     ::placeholder{
         color: $dark-gray;
     }

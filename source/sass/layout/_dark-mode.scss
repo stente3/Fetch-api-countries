@@ -8,6 +8,10 @@
     box-shadow: none;
     .navegation__header, div .dark-mode__paragraph{
         color: $white;
+        font-weight: $semi-bold;
+    }
+    .navegation__header{
+        font-weight: $extra-bold;
     }
 }
 
