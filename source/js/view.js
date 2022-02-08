@@ -28,6 +28,7 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     darkImage();
+    localMode();
 }
 function darkImage(){
     if( !!body.classList.contains("body-dark") === true ){
@@ -38,4 +39,18 @@ function darkImage(){
     }
 }
 
+// LocalStorage Dark-Mode
+function localMode(){
+    if( !!body.classList.contains("body-dark") === true ){
+        localStorage.setItem("mode", "dark");
+    } else{
+        localStorage.setItem("mode", "white");
+    }
+}
+
+if(localStorage.getItem("mode") === "dark"){
+    filterSection.classList.add("filter-section--dark");
+    body.classList.add("body-dark");
+    darkImage();
+}
 
