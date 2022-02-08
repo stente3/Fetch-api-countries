@@ -20,6 +20,7 @@
     .filter-section__searcher{
         background-image: url("../assets/img/search-dark-mode.svg");
         background-color: $dark-blue;
+        color: $white;
         box-shadow: none;
     }
     .filter__default-option{
