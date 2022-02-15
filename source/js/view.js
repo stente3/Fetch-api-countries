@@ -16,6 +16,7 @@ options.forEach((e) =>{
 // Dark Mode
 let body = document.querySelector(".body");
 let filterSection = document.querySelector(".filter-section");
+let main = document.querySelector(".main");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
 let darkModeImage = document.querySelector(".dark-mode__img");
 
@@ -27,6 +28,7 @@ buttonMode.forEach(element =>{
 function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
+    main.classList.toggle("main-dark");
     darkImage();
     localMode();
 }

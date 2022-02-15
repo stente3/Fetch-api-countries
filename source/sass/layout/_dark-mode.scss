@@ -41,3 +41,12 @@
         border-color: transparent transparent #FFF #FFF;
     }
 }
+/* Cards Section */
+.main-dark{
+    .card{
+        background-color: $dark-blue;
+        color: $white;
+    }
+}
+
+
