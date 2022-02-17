@@ -53,6 +53,7 @@ function localMode(){
 if(localStorage.getItem("mode") === "dark"){
     filterSection.classList.add("filter-section--dark");
     body.classList.add("body-dark");
+    main.classList.add("main-dark");
     darkImage();
 }
 
