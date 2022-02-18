@@ -1,16 +1,19 @@
 .main{
+    width: 90%;
     display: grid;
-    gap: 2rem;
+    gap: 3rem;
     margin: 1.5rem auto;
+    grid-template-columns: repeat(auto-fit, minmax(21.2rem, 1fr));
 }
 /* Card */
 .card{
     background-color: $white;
-    max-width: 23.2rem;
-    height: 28rem;
+    width: 24.2rem;
+    height: 30rem;
     margin: 0 auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     overflow: hidden;
+    cursor: pointer;
     @include borders;
 }
 .card-container__img{
@@ -34,3 +37,16 @@
 .information__paragraph span{
     font-weight: $semi-bold;
 }
+@include tablet{
+    .main{
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(23.2rem, 1fr));
+        @include general-padding-tablet;
+    }
+}
+@include desktop{
+    .main{
+        @include general-padding-desktop;
+    }
+}
+
