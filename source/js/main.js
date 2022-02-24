@@ -1,16 +1,26 @@
-fetch("https://restcountries.com/v2/all")
-    .then(response => response.json())
-    .then(data => createCard(data) )
 // Variables
-let mainCard = document.querySelector(".main");
+let mainContent = document.querySelector(".main");
 let currentNumber = 20;
+let loaderContainer;
 
 // Functions
+function fetchApi(){
+    document.addEventListener("DOMContentLoaded", () =>{
+        let url = "https://restcountries.com/v2/all";
+        startLoader();
+        fetch(url)
+            .then(response => response.json())
+                .then(data => {
+                    endLoader()
+                    createCard(data);
+                })
+    })
+}
 function createCard(data){
     for(let i = 0; i < currentNumber; i++){
         let card = document.createElement("div");
         card.classList.add("card");
-        mainCard.appendChild(card);
+        mainContent.appendChild(card);
         card.innerHTML = ` 
         <div class="card-container__img">
                         <img src="${data[i].flag}" class="card__image"></img>
@@ -31,3 +41,14 @@ function createCard(data){
         `;
     }
 }
+
+function startLoader(){
+    loaderContainer = document.createElement("div");
+    loaderContainer.classList.add("loader");
+    mainContent.appendChild(loaderContainer);
+}
+function endLoader(){
+    loaderContainer.remove("loader");
+}
+
+fetchApi();

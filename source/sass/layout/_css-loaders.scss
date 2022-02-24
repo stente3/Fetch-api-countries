@@ -2,14 +2,14 @@
 .loader,
 .loader:before,
 .loader:after {
-  background: #000000;
+  background: #000;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
 .loader {
-  color: #000000;
+  color: #000;
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
@@ -57,4 +57,15 @@
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+/* Dark mode */
+.main-dark .loader{
+    background: #FFF;
+}
+
+.main-dark .loader,
+.main-dark .loader:before,
+.main-dark .loader:after {
+    background: #FFF;
+    color: #FFF;
 }
