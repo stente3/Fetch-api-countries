@@ -1,30 +1,19 @@
-// Filter Section
-let filter = document.querySelector(".filter");
-let options = document.querySelectorAll(".option");
-let defaultOption = document.querySelector(".filter__default-option .option p");
-
-filter.addEventListener("click", ()=> {
-    filter.classList.toggle("active");
-});
-
-options.forEach((e) =>{
-    e.addEventListener("click", (e) =>{
-        defaultOption.textContent = e.target.textContent;
-    })
-})
-
-// Dark Mode
+// Variables
 let body = document.querySelector(".body");
 let filterSection = document.querySelector(".filter-section");
 let main = document.querySelector(".main");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
 let darkModeImage = document.querySelector(".dark-mode__img");
 
-buttonMode.forEach(element =>{
-    element.addEventListener("click", (e) =>{
-        darkMode();
+// Functions
+function listener(){
+        buttonMode.forEach(element =>{
+        element.addEventListener("click", (e) =>{
+            darkMode();
+        })
     })
-})
+}
+
 function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
@@ -32,6 +21,7 @@ function darkMode(){
     darkImage();
     localMode();
 }
+
 function darkImage(){
     if( !!body.classList.contains("body-dark") === true ){
         darkModeImage.src = "./public/assets/img/moon-dark-mode.svg";
@@ -49,11 +39,14 @@ function localMode(){
         localStorage.setItem("mode", "white");
     }
 }
-
-if(localStorage.getItem("mode") === "dark"){
-    filterSection.classList.add("filter-section--dark");
-    body.classList.add("body-dark");
-    main.classList.add("main-dark");
-    darkImage();
+// Look at the localstorage and if it has mode "dark", it makes the page dark mode again
+function localDarkMode(){
+        if(localStorage.getItem("mode") === "dark"){
+        filterSection.classList.add("filter-section--dark");
+        body.classList.add("body-dark");
+        main.classList.add("main-dark");
+        darkImage();
+    }
 }
 
+export { listener, localDarkMode };
