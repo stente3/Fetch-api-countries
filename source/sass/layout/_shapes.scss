@@ -1,0 +1,11 @@
+.dark-mode--moon {
+   width: 2rem;
+   height: 2rem;
+   border-radius: 50%;
+   box-shadow: inset 5px -8px #000, inset 6px -5px 1px 2px #000;
+   margin-right: .5rem;
+   cursor: pointer;
+}
+.body-dark .dark-mode--moon{
+   box-shadow: inset 5px -8px #FFF, inset 6px -5px 1px 2px #FFF;
+}

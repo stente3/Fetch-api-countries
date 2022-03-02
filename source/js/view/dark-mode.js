@@ -3,7 +3,7 @@ let body = document.querySelector(".body");
 let filterSection = document.querySelector(".filter-section");
 let main = document.querySelector(".main");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
-let darkModeImage = document.querySelector(".dark-mode__img");
+let darkModeMoon = document.querySelector(".dark-mode--moon");
 
 // Functions
 function listener(){
@@ -18,17 +18,7 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     main.classList.toggle("main-dark");
-    darkImage();
     localMode();
-}
-
-function darkImage(){
-    if( !!body.classList.contains("body-dark") === true ){
-        darkModeImage.src = "./public/assets/img/moon-dark-mode.svg";
-    }
-    else{
-        darkModeImage.src = "./public/assets/img/moon-white-mode.svg";
-    }
 }
 
 // LocalStorage Dark-Mode
@@ -45,7 +35,6 @@ function localDarkMode(){
         filterSection.classList.add("filter-section--dark");
         body.classList.add("body-dark");
         main.classList.add("main-dark");
-        darkImage();
     }
 }
 
