@@ -1,5 +1,5 @@
 // Imports
-import { createFooter, moreCountries } from "./more-countries.js";
+import { showFooter, moreCountries } from "./more-countries.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
@@ -10,20 +10,22 @@ let loaderContainer;
 function fetchApi(){
     document.addEventListener("DOMContentLoaded", () =>{
         let url = "https://restcountries.com/v2/all";
+        // Shows the loading logo
         startLoader();
         fetch(url)
             .then(response => response.json())
                 .then(data => {
+                    // Hides the loading logo
                     endLoader()
-                    createCard(data);
-                    createFooter();
+                    createCards(data, 0, currentNumber);
+                    showFooter();
                     moreCountries(data);
                 })
     })
 }
 
-function createCard(data){
-    for(let i = 0; i < currentNumber; i++){
+function createCards(data, firstN, lastN){
+    for(let i = firstN; i < lastN; i++){
         let card = document.createElement("div");
         card.classList.add("card");
         mainContent.appendChild(card);
@@ -59,4 +61,4 @@ function endLoader(){
 }
 
 // Exports
-export { fetchApi, createCard, startLoader, endLoader };
+export { fetchApi, createCards, startLoader, endLoader };
