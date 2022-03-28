@@ -3,12 +3,11 @@ let body = document.querySelector(".body");
 let filterSection = document.querySelector(".filter-section");
 let main = document.querySelector(".main");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
-let darkModeMoon = document.querySelector(".dark-mode--moon");
 
 // Functions
 function listener(){
         buttonMode.forEach(element =>{
-        element.addEventListener("click", (e) =>{
+        element.addEventListener("click", () =>{
             darkMode();
         })
     })

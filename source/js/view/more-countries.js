@@ -1,8 +1,6 @@
 import { createCards } from "./fetch-API.js";
 
 // Variables
-let footer = document.querySelector(".footer");
-let mainContent = document.querySelector(".main");
 let arrowDown = document.querySelector(".arrow-down");
 let firstCountry = 20;
 let lastCountry = 40;
