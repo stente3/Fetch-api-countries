@@ -1,5 +1,6 @@
 // Imports
 import { showFooter, moreCountries } from "./more-countries.js";
+import { search } from "./seacher.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
@@ -20,6 +21,7 @@ function fetchApi(){
                     createCards(data, 0, currentNumber);
                     showFooter();
                     moreCountries(data);
+                    search(data);
                 })
     })
 }
