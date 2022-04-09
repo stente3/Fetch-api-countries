@@ -3,12 +3,14 @@ import { rmMainSection } from "./remove-elements.js";
 import { createCards } from "./fetch-API.js";
 
 // Variables
+export let nSearch = 0;
 let filter = document.querySelector(".filter-section__searcher");
 let mainContent = document.querySelector(".main");
 let footer = document.querySelector(".footer");
 
 function search(data){
     filter.addEventListener("input", (e) =>{
+        nSearch += 1;
         if(e.target.value == " " || e.target.value.length == 0){
             if(mainContent.children.length < 19){
                 rmMainSection();
