@@ -20,7 +20,9 @@ function search(data){
         } else{
             rmMainSection();
             for(let i=0; i < data.length; i++){
-                if(data[i].name.includes(e.target.value)){
+                // Make in capitalize the first letter of the paragraph 
+                let palabra = e.target.value[0].toUpperCase() + e.target.value.slice(1);
+                if(data[i].name.includes(palabra)){
                     createCard(data, i);
                 } 
             }  
