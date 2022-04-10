@@ -12,17 +12,15 @@ function search(data){
     filter.addEventListener("input", (e) =>{
         nSearch += 1;
         if(e.target.value == " " || e.target.value.length == 0){
-            if(mainContent.children.length < 19){
-                rmMainSection();
-                createCards(data, 0, 20);
-                footer.classList.remove("hide");
-            }
+            rmMainSection();
+            createCards(data, 0, 20);
+            footer.classList.remove("hide");
         } else{
             rmMainSection();
             for(let i=0; i < data.length; i++){
                 // Make in capitalize the first letter of the paragraph 
                 let palabra = e.target.value[0].toUpperCase() + e.target.value.slice(1);
-                if(data[i].name.includes(palabra)){
+                if(data[i].name.common.includes(palabra)){
                     createCard(data, i);
                 } 
             }  
@@ -36,10 +34,10 @@ function createCard(data, i){
     mainContent.appendChild(card);
     card.innerHTML = `         
     <div class="card-container__img">
-            <img src="${data[i].flag}" class="card__image"></img>
+            <img src="${data[i].flags.png}" class="card__image"></img>
         </div>
         <div class="information">
-            <h3 class="information__heading"> ${data[i].name} 
+            <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
             <p class="information__paragraph">
                 <span>Population: </span> ${data[i].population}
