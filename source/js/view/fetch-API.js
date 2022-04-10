@@ -10,7 +10,7 @@ let loaderContainer;
 // Functions
 function fetchApi(){
     document.addEventListener("DOMContentLoaded", () =>{
-        let url = "https://restcountries.com/v2/all";
+        let url = "https://restcountries.com/v3.1/all";
         // Shows the loading logo
         startLoader();
         fetch(url)
@@ -33,10 +33,10 @@ function createCards(data, firstN, lastN){
         mainContent.appendChild(card);
         card.innerHTML = ` 
         <div class="card-container__img">
-            <img src="${data[i].flag}" class="card__image"></img>
+            <img src="${data[i].flags.png}" class="card__image"></img>
         </div>
         <div class="information">
-            <h3 class="information__heading"> ${data[i].name} 
+            <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
             <p class="information__paragraph">
                 <span>Population: </span> ${data[i].population}
