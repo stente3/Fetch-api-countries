@@ -51,4 +51,4 @@ function createCard(data, i){
     </div>
             `;
 }
-export { search };
+export { search, createCard };
