@@ -1,3 +1,4 @@
+import { hideArrow, footer } from "./remove-elements.js";
 import { createCards } from "./fetch-API.js";
 import { nSearch } from "./seacher.js";
 
@@ -8,7 +9,7 @@ let lastCountry = 40;
 
 // Funcions
 function showFooter(){
-    arrowDown.classList.remove("hide");
+    footer.classList.remove("hide");
 }
 
 function moreCountries(data){
@@ -26,10 +27,10 @@ function moreCountries(data){
             let lessCountries = lastCountry - data.length;
             lastCountry -= lessCountries;
             createCards(data, firstCountry, lastCountry);
-            arrowDown.classList.add("hide");
+            hideArrow();
         }    
     })
 }
 
 
-export { showFooter, moreCountries };
+export { showFooter, moreCountries, arrowDown };

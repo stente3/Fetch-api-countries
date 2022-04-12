@@ -32,4 +32,4 @@ function rmMainSection(){
     hideArrow();
 }
 // Exports
-export { hideFilterSection, hideMainSection, rmMainSection };
+export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow };

@@ -1,6 +1,6 @@
 // Imports
 import { rmMainSection } from "./remove-elements.js";
-import { showFooter, moreCountries } from "./more-countries.js";
+import {  moreCountries, showFooter } from "./more-countries.js";
 import { search } from "./seacher.js";
 import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
 
@@ -43,9 +43,8 @@ function fetchApiregions(region){
             endLoader()
             createCards(data, 0, currentNumber);
             showFooter();
-            moreCountries(data);
             search(data);
         })
 }
 
-export { optionsFunctionality };
+export { optionsFunctionality, defaultOption };
