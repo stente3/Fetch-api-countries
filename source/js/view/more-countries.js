@@ -11,7 +11,7 @@ let lastCountry = 40;
 function showFooter(){
     footer.classList.remove("hide");
 }
-
+// Shows 20 new countries on the screen
 function moreCountries(data){
     arrowDown.addEventListener("click", () =>{
         if( lastCountry < data.length ){
@@ -23,14 +23,13 @@ function moreCountries(data){
             createCards(data, firstCountry, lastCountry);
             firstCountry += 20;
             lastCountry += 20;
-        } else{
+        } else {
             let lessCountries = lastCountry - data.length;
             lastCountry -= lessCountries;
             createCards(data, firstCountry, lastCountry);
             hideArrow();
-        }    
+        }
     })
 }
-
 
 export { showFooter, moreCountries, arrowDown };

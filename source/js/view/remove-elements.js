@@ -3,13 +3,13 @@ let mainSection = document.querySelector(".main");
 let footer = document.querySelector(".footer");
 let filter = document.querySelector(".filter-section");
 
-
 /* Hide arrow down */
 function hideArrow(){
     if(!footer.classList.contains("hide")){
         footer.classList.add("hide");
     }
 }
+
 /* Hide mainSection */
 function hideMainSection(){
     mainSection.classList.add("hide");
@@ -22,6 +22,7 @@ function hideFilterSection(){
     mainSection.classList.add("hide");
     footer.classList.add("hide");
 }
+
 /* Remove cards of main section and hide arrow down */
 function rmMainSection(){
     while(mainSection.children.length > 0){

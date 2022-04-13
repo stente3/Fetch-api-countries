@@ -1,6 +1,5 @@
 // Imports
 import { rmMainSection } from "./remove-elements.js";
-import {  moreCountries, showFooter } from "./more-countries.js";
 import { search } from "./seacher.js";
 import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
 
@@ -8,7 +7,6 @@ import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
 let filter = document.querySelector(".filter__container");
 let defaultOption = document.querySelector(".filter__default-option .option p");
 let optionsContainer = document.querySelectorAll(".select_ul .option");
-let currentNumber = 20;
 let currentRegion;
 
 // Function
@@ -31,6 +29,7 @@ function optionsFunctionality(){
     })
 }
 
+// Shows all the countries of the chosen region
 function fetchApiregions(region){
     let url = `https://restcountries.com/v3.1/region/${region}`;
     // Shows the loading logo        
@@ -41,8 +40,7 @@ function fetchApiregions(region){
         .then(data => {
             // Hides the loading logo
             endLoader()
-            createCards(data, 0, currentNumber);
-            showFooter();
+            createCards(data, 0, data.length);
             search(data);
         })
 }

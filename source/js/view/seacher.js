@@ -3,7 +3,7 @@ import { rmMainSection } from "./remove-elements.js";
 import { createCards } from "./fetch-API.js";
 
 // Variables
-export let nSearch = 0;
+let nSearch = 0;
 let filter = document.querySelector(".filter-section__searcher");
 let mainContent = document.querySelector(".main");
 let footer = document.querySelector(".footer");
@@ -21,6 +21,7 @@ function search(data){
                 // Make in capitalize the first letter of the paragraph 
                 let palabra = e.target.value[0].toUpperCase() + e.target.value.slice(1);
                 if(data[i].name.common.includes(palabra)){
+                    // If one or more countries coincide with the search carried out, the card of each matching country is created
                     createCard(data, i);
                 } 
             }  
@@ -51,4 +52,5 @@ function createCard(data, i){
     </div>
             `;
 }
-export { search, createCard };
+
+export { search, createCard, nSearch };
