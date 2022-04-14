@@ -1,11 +1,11 @@
 // Imports
 import { rmMainSection } from "./remove-elements.js";
-import { createCards } from "./fetch-API.js";
+import { createCards, mainContent } from "./fetch-API.js";
+import { detailsCountry } from "./details.js";
 
 // Variables
 let nSearch = 0;
 let filter = document.querySelector(".filter-section__searcher");
-let mainContent = document.querySelector(".main");
 let footer = document.querySelector(".footer");
 
 function search(data){
@@ -23,6 +23,7 @@ function search(data){
                 if(data[i].name.common.includes(palabra)){
                     // If one or more countries coincide with the search carried out, the card of each matching country is created
                     createCard(data, i);
+                    detailsCountry();
                 } 
             }  
         }
@@ -34,7 +35,7 @@ function createCard(data, i){
     card.classList.add("card");
     mainContent.appendChild(card);
     card.innerHTML = `         
-    <div class="card-container__img">
+    <div class="card-container__img" id="${data[i].cca3}">
             <img src="${data[i].flags.png}" class="card__image"></img>
         </div>
         <div class="information">

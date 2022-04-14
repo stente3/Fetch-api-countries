@@ -1,5 +1,6 @@
+import { mainContent } from "./fetch-API.js";
+
 // Variables
-let mainSection = document.querySelector(".main");
 let footer = document.querySelector(".footer");
 let filter = document.querySelector(".filter-section");
 
@@ -10,24 +11,24 @@ function hideArrow(){
     }
 }
 
-/* Hide mainSection */
+/* Hide mainContent */
 function hideMainSection(){
-    mainSection.classList.add("hide");
+    mainContent.classList.add("hide");
     footer.classList.add("hide");
 }
 
 /* Hide all since filter section */
 function hideFilterSection(){
     filter.classList.add("hide");
-    mainSection.classList.add("hide");
+    mainContent.classList.add("hide");
     footer.classList.add("hide");
 }
 
 /* Remove cards of main section and hide arrow down */
 function rmMainSection(){
-    while(mainSection.children.length > 0){
+    while(mainContent.children.length > 0){
         let i = 0;
-        mainSection.children[i].remove();
+        mainContent.children[i].remove();
         i++;
     }
     hideArrow();

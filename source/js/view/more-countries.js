@@ -1,5 +1,5 @@
 import { hideArrow, footer } from "./remove-elements.js";
-import { createCards } from "./fetch-API.js";
+import { createCards, mainContent } from "./fetch-API.js";
 import { nSearch } from "./seacher.js";
 
 // Variables

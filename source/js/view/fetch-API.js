@@ -32,7 +32,7 @@ function createCards(data, firstN, lastN){
         card.classList.add("card");
         mainContent.appendChild(card);
         card.innerHTML = ` 
-        <div class="card-container__img">
+        <div class="card-container__img" id="${data[i].cca3}">
             <img src="${data[i].flags.png}" class="card__image"></img>
         </div>
         <div class="information">
@@ -49,6 +49,9 @@ function createCards(data, firstN, lastN){
             </p>
         </div>
             `;
+        mainContent.children[i].addEventListener("click", () =>{
+            console.log(mainContent.children[i].firstElementChild.id);
+        })
     }
 }
 
@@ -63,4 +66,4 @@ function endLoader(){
 }
 
 // Exports
-export { fetchApi, createCards, startLoader, endLoader };
+export { mainContent, fetchApi, createCards, startLoader, endLoader };
