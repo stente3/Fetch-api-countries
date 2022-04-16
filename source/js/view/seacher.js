@@ -1,6 +1,8 @@
 // Imports
 import { rmMainSection } from "./remove-elements.js";
 import { createCards, mainContent } from "./fetch-API.js";
+import { showFooter } from "./more-countries.js";
+import { fetchApiregions, defaultOption } from "./filter-section.js";
 import { detailsCountry } from "./details.js";
 
 // Variables
@@ -13,8 +15,12 @@ function search(data){
         nSearch += 1;
         if(e.target.value == " " || e.target.value.length == 0){
             rmMainSection();
-            createCards(data, 0, 20);
-            footer.classList.remove("hide");
+            if(defaultOption.textContent == "Filter by Region"){
+                createCards(data, 0, 20);
+                showFooter();
+            } else{
+                fetchApiregions(defaultOption.textContent.toLowerCase().trim())
+            }
         } else{
             rmMainSection();
             for(let i=0; i < data.length; i++){

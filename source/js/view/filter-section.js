@@ -45,4 +45,4 @@ function fetchApiregions(region){
         })
 }
 
-export { optionsFunctionality, defaultOption };
+export { optionsFunctionality, defaultOption, fetchApiregions };
