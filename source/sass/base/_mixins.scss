@@ -12,7 +12,7 @@
 }
 
 @mixin borders{
-    border-radius: 5px;
+    border-radius: .5rem;
 }
 
 @mixin options-filter{
@@ -27,4 +27,8 @@
 
 @mixin general-padding-desktop{
     padding: 1rem 7%;
+}
+
+@mixin shadows{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }

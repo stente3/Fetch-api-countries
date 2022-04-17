@@ -42,7 +42,7 @@ function createCard(data, i){
     mainContent.appendChild(card);
     card.innerHTML = `         
     <div class="card-container__img" id="${data[i].cca3}">
-            <img src="${data[i].flags.png}" class="card__image"></img>
+            <img src="${data[i].flags.svg}" class="card__image"></img>
         </div>
         <div class="information">
             <h3 class="information__heading"> ${data[i].name.common} 
