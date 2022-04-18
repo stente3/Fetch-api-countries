@@ -38,6 +38,7 @@
 }
 .borders__heading{
     margin: 0 0 2rem 0;
+    font-size: 1.5rem;
 }
 
 /* Borders countries */
@@ -87,6 +88,7 @@
         }
     }
 }
+/* Desktop */
 @include desktop{
     .containerDetails{
         margin: 5rem 10vw;

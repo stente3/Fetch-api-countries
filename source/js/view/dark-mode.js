@@ -2,6 +2,7 @@ import { mainContent } from "./fetch-API.js";
 
 // Variables
 let body = document.querySelector(".body");
+let details = document.querySelector(".containerDetails");
 let filterSection = document.querySelector(".filter-section");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
 
@@ -18,6 +19,7 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     mainContent.classList.toggle("main-dark");
+    details.classList.toggle("containerDetails-dark");
     localMode();
 }
 
@@ -32,10 +34,11 @@ function localMode(){
 // Look at the localstorage and if it has mode "dark", it makes the page dark mode again
 function localDarkMode(){
         if(localStorage.getItem("mode") === "dark"){
-        filterSection.classList.add("filter-section--dark");
-        body.classList.add("body-dark");
-        mainContent.classList.add("main-dark");
-    }
+            filterSection.classList.add("filter-section--dark");
+            body.classList.add("body-dark");
+            mainContent.classList.add("main-dark");
+            details.classList.add("containerDetails-dark");
+        }
 }
 
 export { listener, localDarkMode };
