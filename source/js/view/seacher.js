@@ -6,13 +6,12 @@ import { fetchApiregions, defaultOption } from "./filter-section.js";
 import { detailsCountry } from "./details.js";
 
 // Variables
-let nSearch = 0;
+let nSearch = document.querySelector(".filter-section__searcher");
 let filter = document.querySelector(".filter-section__searcher");
-let footer = document.querySelector(".footer");
 
 function search(data){
     filter.addEventListener("input", (e) =>{
-        nSearch += 1;
+        nSearch.id ++;
         if(e.target.value == " " || e.target.value.length == 0){
             rmMainSection();
             if(defaultOption.textContent == "Filter by Region"){

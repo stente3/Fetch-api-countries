@@ -19,7 +19,7 @@ function fetchApi(){
                     // Hides the loading logo
                     endLoader()
                     createCards(data, 0, currentNumber);
-                    //showFooter();
+                    showFooter();
                     moreCountries(data);
                     search(data);
                 })

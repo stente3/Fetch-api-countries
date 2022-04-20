@@ -37,7 +37,6 @@ function localDarkMode(){
             filterSection.classList.add("filter-section--dark");
             body.classList.add("body-dark");
             mainContent.classList.add("main-dark");
-            details.classList.add("containerDetails-dark");
         }
 }
 

@@ -16,9 +16,10 @@ function moreCountries(data){
     arrowDown.addEventListener("click", () =>{
         if( lastCountry < data.length ){
             //if the user uses the searcher, the firstCountry and lastCountry return to their default options
-            if (nSearch > 0){
+            if (nSearch.id > 0){
                 firstCountry = 20;
                 lastCountry = 40;
+                nSearch.id = 0;
             }
             createCards(data, firstCountry, lastCountry);
             firstCountry += 20;
