@@ -15,37 +15,37 @@ function detailsCountry(){
             </div>
             <!-- Country details -->
             <article class="countryDetails">
-                <img src="https://flagcdn.com/mx.svg" class="countryDetails__flag">
+                <img src="data[i].flags.svg" class="countryDetails__flag">
                 <div class="countryDetails__container">
                     <!-- Information container -->
                     <div class="container__information">
-                        <h2 class="information__heading">Name</h2>
+                        <h2 class="information__heading">data[i].name.common</h2>
                         <div class="information__main">
                             <p class="main__detail detail">
-                                <span>Native Name:</span> other
+                                <span>Native Name:</span> data[i].name.nativeName.official
                             </p>
                             <p class="main__detail detail">
-                                <span>Population:</span> other
+                                <span>Population:</span> data[i].population
                             </p>
                             <p class="main__detail detail">
-                                <span>Region:</span> other
+                                <span>Region:</span> data[i].region
                             </p>
                             <p class="main__detail detail">
-                                <span>Sub Region:</span> other
+                                <span>Sub Region:</span> data[i].subregion
                             </p>
                             <p class="main__detail detail">
-                                <span>Capital:</span> other
+                                <span>Capital:</span> data[i].capital
                             </p>
                         </div>
                         <div class="information__other">
                             <p class="other__detail detail">
-                                <span>Top Level Domain:</span> other
+                                <span>Top Level Domain:</span> data[i].tld
                             </p>
                             <p class="other__detail detail">
-                                <span>Currencies:</span> other
+                                <span>Currencies:</span> data[i].currencies.DJF.name
                             </p>
                             <p class="other__detail detail">
-                                <span>Languages:</span> other
+                                <span>Languages:</span> data[i].languages
                             </p>
                         </div>
                     </div>

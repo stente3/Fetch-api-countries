@@ -40,6 +40,7 @@ function fetchApiregions(region){
         .then(data => {
             // Hides the loading logo
             endLoader()
+            rmMainSection();
             createCards(data, 0, data.length);
             search(data);
         })

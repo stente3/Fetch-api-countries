@@ -12,8 +12,8 @@ let filter = document.querySelector(".filter-section__searcher");
 function search(data){
     filter.addEventListener("input", (e) =>{
         nSearch.id ++;
+        rmMainSection();
         if(e.target.value == " " || e.target.value.length == 0){
-            rmMainSection();
             if(defaultOption.textContent == "Filter by Region"){
                 createCards(data, 0, 20);
                 showFooter();
@@ -21,16 +21,15 @@ function search(data){
                 fetchApiregions(defaultOption.textContent.toLowerCase().trim())
             }
         } else{
-            rmMainSection();
             for(let i=0; i < data.length; i++){
                 // Make in capitalize the first letter of the paragraph 
                 let palabra = e.target.value[0].toUpperCase() + e.target.value.slice(1);
                 if(data[i].name.common.includes(palabra)){
                     // If one or more countries coincide with the search carried out, the card of each matching country is created
                     createCard(data, i);
-                    detailsCountry();
                 } 
             }  
+            detailsCountry();
         }
     })
 }
