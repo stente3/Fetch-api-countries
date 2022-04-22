@@ -54,13 +54,16 @@
     }
 }
 /* Dark mode */
-.main-dark .loader{
-    background: #FFF;
+.body-dark .loader{
+    background-color: #FFF;
 }
 
 .main-dark .loader,
+.body-dark .loader,
 .main-dark .loader:before,
-.main-dark .loader:after {
+.body-dark .loader:before,
+.main-dark .loader:after,
+.body-dark .loader:after{
     background: #FFF;
     color: #FFF;
 }
