@@ -1,5 +1,6 @@
+// Imports
 import { hideArrow, footer } from "./remove-elements.js";
-import { createCards, mainContent } from "./fetch-API.js";
+import { createCards } from "./fetch-API.js";
 import { nSearch } from "./seacher.js";
 
 // Variables
@@ -33,4 +34,5 @@ function moreCountries(data){
     })
 }
 
+// Exports
 export { showFooter, moreCountries, arrowDown };

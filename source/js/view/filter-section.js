@@ -46,4 +46,5 @@ function fetchApiregions(region){
         })
 }
 
+// Exports
 export { optionsFunctionality, defaultOption, fetchApiregions };

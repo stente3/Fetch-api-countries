@@ -29,7 +29,7 @@ function search(data){
                     createCard(data, i);
                 } 
             }  
-            detailsCountry();
+            detailsCountry(0, mainContent.children.length);
         }
     })
 }
@@ -58,4 +58,5 @@ function createCard(data, i){
             `;
 }
 
+// Exports
 export { search, createCard, nSearch };

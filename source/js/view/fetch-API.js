@@ -1,6 +1,7 @@
 // Imports
 import { showFooter, moreCountries } from "./more-countries.js";
 import { search } from "./seacher.js";
+import { detailsCountry } from "./details.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
@@ -49,12 +50,11 @@ function createCards(data, firstN, lastN){
             </p>
         </div>
             `;
-        mainContent.children[i].addEventListener("click", () =>{
-            console.log(mainContent.children[i].firstElementChild.id);
-        })
     }
+    detailsCountry(firstN, lastN);
 }
 
+// Loaders
 function startLoader(){
     loaderContainer = document.createElement("div");
     loaderContainer.classList.add("loader");

@@ -1,3 +1,4 @@
+// Imports
 import { mainContent } from "./fetch-API.js";
 
 // Variables

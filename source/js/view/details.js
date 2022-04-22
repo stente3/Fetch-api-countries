@@ -1,11 +1,13 @@
+// Variables
 let mainContent = document.querySelector(".main").children;
 
-function detailsCountry(){
-    for(let i = 0; i < mainContent.length; i++){
+function detailsCountry(firstN, lastN){
+    for(let i = firstN; i < lastN; i++){
         mainContent[i].addEventListener("click", () =>{
             console.log(mainContent[i].firstElementChild.id);
         })
     }
+
     /*
         <section class="containerDetails">
             <!-- Button for come back -->
@@ -65,4 +67,5 @@ function detailsCountry(){
         */
 }
 
+// Exports
 export { detailsCountry }

@@ -1,3 +1,4 @@
+// Imports 
 import { mainContent } from "./fetch-API.js";
 
 // Variables
@@ -40,4 +41,5 @@ function localDarkMode(){
         }
 }
 
+// Exports 
 export { listener, localDarkMode };
