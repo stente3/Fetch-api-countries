@@ -1,6 +1,6 @@
 // Imports
 import { rmMainSection } from "./remove-elements.js";
-import { search } from "./seacher.js";
+import { search, clearSearcher } from "./seacher.js";
 import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
 
 // Variables
@@ -25,6 +25,7 @@ function optionsFunctionality(){
                 }
             }
             defaultOption.textContent = element.target.textContent.trim();
+            clearSearcher();
         })
     })
 }
@@ -45,6 +46,7 @@ function fetchApiregions(region){
             search(data);
         })
 }
+
 
 // Exports
 export { optionsFunctionality, defaultOption, fetchApiregions };

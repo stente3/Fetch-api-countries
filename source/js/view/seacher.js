@@ -58,5 +58,9 @@ function createCard(data, i){
             `;
 }
 
+function clearSearcher(){
+    nSearch.value = "";
+}
+
 // Exports
-export { search, createCard, nSearch };
+export { search, createCard, nSearch, clearSearcher };
