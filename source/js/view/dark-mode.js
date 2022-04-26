@@ -20,7 +20,7 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     mainContent.classList.toggle("main-dark");
-    details.classList.toggle("containerDetails-dark");
+    //details.classList.toggle("containerDetails-dark");
     localMode();
 }
 
