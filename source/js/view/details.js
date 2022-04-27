@@ -1,6 +1,5 @@
 // Imports
-import { hideFilterSection } from "./remove-elements.js";
-//import { startLoader, endLoader } from "./fetch-API.js";
+import { hideFilterSection } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;

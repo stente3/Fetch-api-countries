@@ -1,5 +1,5 @@
 // Imports
-import { rmMainSection } from "./remove-elements.js";
+import { rmMainSection } from "./utilities.js";
 import { search, clearSearcher } from "./seacher.js";
 import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
 

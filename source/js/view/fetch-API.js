@@ -2,11 +2,11 @@
 import { showFooter, moreCountries } from "./more-countries.js";
 import { search } from "./seacher.js";
 import { detailsCountry } from "./details.js";
+import { startLoader, endLoader } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
 let currentNumber = 20;
-let loaderContainer;
 
 // Functions
 function fetchApi(){
@@ -54,16 +54,6 @@ function createCards(data, firstN, lastN){
     detailsCountry(firstN, lastN);
 }
 
-// Loaders
-function startLoader(){
-    loaderContainer = document.createElement("div");
-    loaderContainer.classList.add("loader");
-    mainContent.appendChild(loaderContainer);
-}
-
-function endLoader(){
-    loaderContainer.remove("loader");
-}
 
 // Exports
 export { mainContent, fetchApi, createCards, startLoader, endLoader };

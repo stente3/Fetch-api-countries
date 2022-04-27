@@ -1,5 +1,5 @@
 // Imports
-import { hideArrow, footer } from "./remove-elements.js";
+import { hideArrow, showFooter } from "./utilities.js";
 import { createCards } from "./fetch-API.js";
 import { nSearch } from "./seacher.js";
 
@@ -9,9 +9,7 @@ let firstCountry = 20;
 let lastCountry = 40;
 
 // Funcions
-function showFooter(){
-    footer.classList.remove("hide");
-}
+
 // Shows 20 new countries on the screen
 function moreCountries(data){
     arrowDown.addEventListener("click", () =>{

@@ -1,5 +1,5 @@
 // Imports
-import { rmMainSection } from "./remove-elements.js";
+import { rmMainSection, clearSearcher } from "./utilities.js";
 import { createCards, mainContent } from "./fetch-API.js";
 import { showFooter } from "./more-countries.js";
 import { fetchApiregions, defaultOption } from "./filter-section.js";
@@ -58,9 +58,6 @@ function createCard(data, i){
             `;
 }
 
-function clearSearcher(){
-    nSearch.value = "";
-}
 
 // Exports
 export { search, createCard, nSearch, clearSearcher };
