@@ -88,7 +88,12 @@ function createCardByCcn3(data){
             </article>
     `
     body.appendChild(containerDetails)
-    borders(data.borders)
+    if(Object.hasOwn(data, "borders")){
+        borders(data.borders)
+    } else{
+        let borders = document.querySelector(".container__borders");
+        borders.remove();
+    }
 }
 
 // To create every border the country has
