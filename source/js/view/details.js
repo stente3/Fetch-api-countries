@@ -70,10 +70,10 @@ function createCardByCcn3(data){
                                 <span>Top Level Domain:</span> ${data.tld[0]}
                             </p>
                             <p class="other__detail detail">
-                                <span>Currencies:</span> ${Object.keys(data.currencies)[0]}
+                                <span>Currencies:</span> ${Object.values(data.currencies)[0].name}
                             </p>
                             <p class="other__detail detail">
-                                <span>Languages:</span> ${Object.keys(data.languages)}
+                                <span>Languages:</span> ${Object.values(data.languages)}
                             </p>
                         </div>
                     </div>
