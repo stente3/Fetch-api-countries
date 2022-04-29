@@ -1,5 +1,6 @@
 // Imports
-import { mainContent } from "./fetch-API.js";
+import { mainContent, countriesLength } from "./fetch-API.js";
+import { defaultOption } from "./filter-section.js";
 import { nSearch } from "./seacher.js";
 
 // Variables
@@ -36,7 +37,30 @@ function rmMainSection(){
     }
     hideArrow();
 }
-/* Loaders */
+
+/* To clean the Searcher */
+function clearSearcher(){
+    nSearch.value = "";
+}
+
+/* To show footer */
+function showFooter(){
+    footer.classList.remove("hide");
+}
+
+/* To show main, filter and footer section */
+function showMainContent(){
+    filter.classList.remove("hide");
+    mainContent.classList.remove("hide");
+    if(mainContent.children.length != countriesLength && nSearch.id == 0){
+        footer.classList.remove("hide");
+        if(defaultOption.textContent != "Filter by Region"){
+            footer.classList.add("hide");
+        }
+    } 
+}
+
+// Loaders 
 function startLoader(){
     loaderContainer = document.createElement("div");
     loaderContainer.classList.add("loader");
@@ -47,14 +71,15 @@ function endLoader(){
     loaderContainer.remove("loader");
 }
 
-/* To clean the Searcher */
-function clearSearcher(){
-    nSearch.value = "";
-}
-/* To show footer */
-function showFooter(){
-    footer.classList.remove("hide");
+/* To come back to main menu */
+function comeBackButton(){
+    let backButton = document.querySelector(".backButton");
+    let containerDetails = document.querySelector(".containerDetails");
+    backButton.addEventListener("click", () =>{
+        containerDetails.remove();
+        showMainContent();
+    })
 }
 
 // Exports
-export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter };
+export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton };

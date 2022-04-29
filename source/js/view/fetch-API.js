@@ -7,6 +7,7 @@ import { startLoader, endLoader } from "./utilities.js";
 // Variables
 let mainContent = document.querySelector(".main");
 let currentNumber = 20;
+let countriesLength;
 
 // Functions
 function fetchApi(){
@@ -23,6 +24,7 @@ function fetchApi(){
                     showFooter();
                     moreCountries(data);
                     search(data);
+                    countriesLength = data.length;
                 })
     })
 }
@@ -56,4 +58,4 @@ function createCards(data, firstN, lastN){
 
 
 // Exports
-export { mainContent, fetchApi, createCards, startLoader, endLoader };
+export { mainContent, countriesLength, fetchApi, createCards, startLoader, endLoader };

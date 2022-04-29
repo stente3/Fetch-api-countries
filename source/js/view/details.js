@@ -1,5 +1,5 @@
 // Imports
-import { hideFilterSection } from "./utilities.js";
+import { comeBackButton, hideFilterSection } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;
@@ -88,12 +88,14 @@ function createCardByCcn3(data){
             </article>
     `
     body.appendChild(containerDetails)
+    // To check if there are borders in the countries
     if(Object.hasOwn(data, "borders")){
         borders(data.borders)
     } else{
         let borders = document.querySelector(".container__borders");
         borders.remove();
     }
+    comeBackButton();
 }
 
 // To create every border the country has
