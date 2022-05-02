@@ -4,6 +4,7 @@ import { comeBackButton, hideFilterSection } from "./utilities.js";
 // Variables
 let mainContent = document.querySelector(".main").children;
 let body = document.querySelector("body");
+let countryDetails = document.querySelector(".countryDetails");
 let loaderContainer;
 
 function detailsCountry(firstN, lastN){
@@ -95,6 +96,12 @@ function createCardByCcn3(data){
         let borders = document.querySelector(".container__borders");
         borders.remove();
     }
+
+    // To put dark mode
+    if(body.classList.contains("body-dark")){
+        containerDetails.classList.add("containerDetails-dark");
+    }
+
     comeBackButton();
 }
 

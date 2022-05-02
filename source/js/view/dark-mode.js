@@ -3,7 +3,6 @@ import { mainContent } from "./fetch-API.js";
 
 // Variables
 let body = document.querySelector(".body");
-let details = document.querySelector(".containerDetails");
 let filterSection = document.querySelector(".filter-section");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
 
@@ -12,6 +11,10 @@ function listener(){
         buttonMode.forEach(element =>{
         element.addEventListener("click", () =>{
             darkMode();
+            // If "Container Details" exists, it toggles between dark mode and white mode
+            if(body.lastElementChild.classList.contains("containerDetails")){
+                body.lastElementChild.classList.toggle("containerDetails-dark");
+            }
         })
     })
 }
@@ -20,7 +23,6 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     mainContent.classList.toggle("main-dark");
-    //details.classList.toggle("containerDetails-dark");
     localMode();
 }
 
