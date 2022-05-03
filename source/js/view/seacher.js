@@ -1,5 +1,5 @@
 // Imports
-import { rmMainSection, clearSearcher } from "./utilities.js";
+import { rmMainSection, clearSearcher, dots } from "./utilities.js";
 import { createCards, mainContent } from "./fetch-API.js";
 import { showFooter } from "./more-countries.js";
 import { fetchApiregions, defaultOption } from "./filter-section.js";
@@ -46,7 +46,7 @@ function createCard(data, i){
             <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
             <p class="information__paragraph">
-                <span>Population: </span> ${data[i].population}
+                <span>Population: </span> ${dots(data[i].population)}
             </p>
             <p class="information__paragraph">
                 <span>Region: </span> ${data[i].region}

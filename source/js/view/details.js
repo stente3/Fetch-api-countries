@@ -1,5 +1,5 @@
 // Imports
-import { comeBackButton, hideFilterSection } from "./utilities.js";
+import { comeBackButton, hideFilterSection, dots } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;
@@ -54,7 +54,7 @@ function createCardByCcn3(data){
                                 <span>Native Name:</span> ${data.name.official}
                             </p>
                             <p class="main__detail detail">
-                                <span>Population:</span> ${data.population}
+                                <span>Population:</span> ${dots(data.population)}
                             </p>
                             <p class="main__detail detail">
                                 <span>Region:</span> ${data.region}

@@ -81,5 +81,9 @@ function comeBackButton(){
     })
 }
 
+function dots(number){
+    number = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+    return number;
+}
 // Exports
-export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton };
+export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton, dots };

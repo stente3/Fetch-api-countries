@@ -2,7 +2,7 @@
 import { showFooter, moreCountries } from "./more-countries.js";
 import { search } from "./seacher.js";
 import { detailsCountry } from "./details.js";
-import { startLoader, endLoader } from "./utilities.js";
+import { startLoader, endLoader, dots } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
@@ -42,7 +42,7 @@ function createCards(data, firstN, lastN){
             <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
             <p class="information__paragraph">
-                <span>Population: </span> ${data[i].population}
+                <span>Population: </span> ${dots(data[i].population)}
             </p>
             <p class="information__paragraph">
                 <span>Region: </span> ${data[i].region}
