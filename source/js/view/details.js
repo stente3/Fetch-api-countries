@@ -67,12 +67,7 @@ function createCardByCcn3(data){
                             </p>
                         </div>
                         <div class="information__other">
-                            <p class="other__detail detail">
-                                <span>Currencies:</span> ${Object.values(data.currencies)[0].name}
-                            </p>
-                            <p class="other__detail detail">
-                                <span>Languages:</span> ${Object.values(data.languages)}
-                            </p>
+
                         </div>
                     </div>
                     <!-- Border details -->
@@ -86,6 +81,28 @@ function createCardByCcn3(data){
             </article>
     `
     body.appendChild(containerDetails)
+
+    // To check if there are "languages" in the countries
+    if(Object.hasOwn(data, "languages")){
+        let informationOther = document.querySelector(".information__other");
+        let details = document.createElement("p");
+        details.classList.add("other__details", "detail");
+        details.innerHTML =  `
+            <span>Languages: </span> ${Object.values(data.languages)};
+        `
+        informationOther.prepend(details);
+    }
+
+    // To check if there are "currencies" in the countries
+    if(Object.hasOwn(data, "currencies")){
+        let informationOther = document.querySelector(".information__other");
+        let details = document.createElement("p");
+        details.classList.add("other__details", "detail");
+        details.innerHTML =  `
+            <span>Currencies: </span> ${Object.values(data.currencies)[0].name};
+        `
+        informationOther.prepend(details);
+    }
 
     // To check if there are "top level domain" in the countries
     if(Object.hasOwn(data, "tld")){
