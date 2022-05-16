@@ -1,5 +1,6 @@
 // Imports
 import { comeBackButton, hideFilterSection, dots } from "./utilities.js";
+import { travelBetweenCountries } from "./travel-across-borders.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;
@@ -88,7 +89,7 @@ function createCardByCcn3(data){
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
         details.innerHTML =  `
-            <span>Languages: </span> ${Object.values(data.languages)};
+            <span>Languages: </span> ${Object.values(data.languages)}
         `
         informationOther.prepend(details);
     }
@@ -99,7 +100,7 @@ function createCardByCcn3(data){
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
         details.innerHTML =  `
-            <span>Currencies: </span> ${Object.values(data.currencies)[0].name};
+            <span>Currencies: </span> ${Object.values(data.currencies)[0].name}
         `
         informationOther.prepend(details);
     }
@@ -127,7 +128,6 @@ function createCardByCcn3(data){
     if(body.classList.contains("body-dark")){
         containerDetails.classList.add("containerDetails-dark");
     }
-
     comeBackButton();
 }
 
@@ -139,8 +139,9 @@ function borders(countries){
         country.classList.add("borders__country", "button");
         country.textContent = element;
         container.appendChild(country);
+        travelBetweenCountries(country);
     })
 }
 
 // Exports
-export { detailsCountry }
+export { detailsCountry, fetchByCcn3 }
