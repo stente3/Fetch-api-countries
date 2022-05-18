@@ -21,6 +21,7 @@ function optionsFunctionality(){
                     currentRegion = element.target.textContent.toLowerCase().trim();
                     fetchApiregions(currentRegion)
                 } else {
+                    rmMainSection();
                     fetchApi();
                 }
             }

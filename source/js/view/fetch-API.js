@@ -11,22 +11,20 @@ let countriesLength;
 
 // Functions
 function fetchApi(){
-    document.addEventListener("DOMContentLoaded", () =>{
-        let url = "https://restcountries.com/v3.1/all";
-        // Shows the loading logo
-        startLoader();
-        fetch(url)
-            .then(response => response.json())
-                .then(data => {
-                    // Hides the loading logo
-                    endLoader()
-                    createCards(data, 0, currentNumber);
-                    showFooter();
-                    moreCountries(data);
-                    search(data);
-                    countriesLength = data.length;
-                })
-    })
+    let url = "https://restcountries.com/v3.1/all";
+    // Shows the loading logo
+    startLoader();
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // Hides the loading logo
+            endLoader()
+            createCards(data, 0, currentNumber);
+            showFooter();
+            moreCountries(data);
+            search(data);
+            countriesLength = data.length;
+        })
 }
 
 function createCards(data, firstN, lastN){
