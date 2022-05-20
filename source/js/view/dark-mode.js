@@ -5,6 +5,7 @@ import { mainContent } from "./fetch-API.js";
 let body = document.querySelector(".body");
 let filterSection = document.querySelector(".filter-section");
 let buttonMode = document.querySelectorAll(".dark-mode--change");
+let darkModeParagraph = document.querySelector(".dark-mode__paragraph");
 
 // Functions
 function listener(){
@@ -23,6 +24,11 @@ function darkMode(){
     filterSection.classList.toggle("filter-section--dark");
     body.classList.toggle("body-dark");
     mainContent.classList.toggle("main-dark");
+    if(darkModeParagraph.textContent == "Light Mode"){
+        darkModeParagraph.textContent = "Dark Mode";
+    } else{
+        darkModeParagraph.textContent = "Light Mode";
+    }
     localMode();
 }
 
@@ -40,6 +46,7 @@ function localDarkMode(){
             filterSection.classList.add("filter-section--dark");
             body.classList.add("body-dark");
             mainContent.classList.add("main-dark");
+            darkModeParagraph.textContent = "Light Mode";
         }
 }
 
