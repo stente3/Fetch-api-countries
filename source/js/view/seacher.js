@@ -14,7 +14,7 @@ function search(data){
         nSearch.id ++;
         rmMainSection();
         if(e.target.value == " " || e.target.value.length == 0){
-            if(defaultOption.textContent == "Filter by Region"){
+            if(defaultOption.textContent == "Filter by Region" || defaultOption.textContent == "All"){
                 createCards(data, 0, 20);
                 showFooter();
             } else{
