@@ -89,7 +89,7 @@ function createCardByCcn3(data){
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
         details.innerHTML =  `
-            <span>Languages: </span> ${Object.values(data.languages)}
+            <span>Languages: </span> ${Object.values(data.languages).join(", ")}
         `
         informationOther.prepend(details);
     }

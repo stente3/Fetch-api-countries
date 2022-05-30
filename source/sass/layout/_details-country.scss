@@ -84,6 +84,7 @@
     }
     .container__information{
         display: grid;
+        column-gap: 1.5rem;
         .information__heading{
             grid-column: 1/3;
         }
