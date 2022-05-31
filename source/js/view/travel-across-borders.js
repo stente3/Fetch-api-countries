@@ -5,7 +5,7 @@ import { fetchByCcn3 } from "./details.js";
 function travelBetweenCountries(country){
     country.addEventListener("click", (element) =>{
         document.querySelector(".containerDetails").remove();
-        fetchByCcn3(element.target.textContent.toLowerCase());
+        fetchByCcn3(element.target.id.toLowerCase());
     })
 }
 

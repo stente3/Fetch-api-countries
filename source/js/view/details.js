@@ -26,16 +26,16 @@ function fetchByCcn3(ccn3){
     // Fetch API
     fetch(url)
         .then(response => response.json())
-        .then(data =>{
-            createCardByCcn3(data)
+        .then(async data =>{
+            await createCardByCcn3(data)
             //End Loader
             loaderContainer.remove("loader");
         }) 
 }
 
-function createCardByCcn3(data){
+async function createCardByCcn3(data){
     let containerDetails = document.createElement("section");
-    containerDetails.classList.add("containerDetails");
+    containerDetails.classList.add("containerDetails", "hide");
     data = data[0];
     containerDetails.innerHTML = `
          <!-- Button for come back -->
@@ -118,7 +118,7 @@ function createCardByCcn3(data){
 
     // To check if there are borders in the countries
     if(Object.hasOwn(data, "borders")){
-        borders(data.borders)
+        await borders(data.borders)
     } else{
         let borders = document.querySelector(".container__borders");
         borders.remove();
@@ -129,18 +129,25 @@ function createCardByCcn3(data){
         containerDetails.classList.add("containerDetails-dark");
     }
     comeBackButton();
+    containerDetails.classList.remove("hide");
 }
 
 // To create every border the country has
-function borders(countries){
+async function borders(countries){
     let container = document.querySelector(".borders__container");
-    countries.forEach(element =>{
-        let country = document.createElement("div");
-        country.classList.add("borders__country", "button");
-        country.textContent = element;
-        container.appendChild(country);
-        travelBetweenCountries(country);
-    })
+    for (let i = 0; i < countries.length; i++) {
+        await fetch(`https://restcountries.com/v3.1/alpha/${countries[i]}`)
+            .then(response => response.json())
+            .then(data =>{
+                // To create each individual border
+                let country = document.createElement("div");
+                country.classList.add("borders__country", "button");
+                country.textContent = data[0].name.common;
+                country.id = countries[i];
+                container.appendChild(country);
+                travelBetweenCountries(country);
+            })
+    }
 }
 
 // Exports
