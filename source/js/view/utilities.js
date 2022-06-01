@@ -54,8 +54,10 @@ function showMainContent(){
     mainContent.classList.remove("hide");
     if(mainContent.children.length != countriesLength && nSearch.id == 0){
         footer.classList.remove("hide");
-        if(defaultOption.textContent != "Filter by Region"){
-            footer.classList.add("hide");
+        if(defaultOption.textContent !== "Filter by Region"){ 
+            if(defaultOption.textContent !== "All"){
+                footer.classList.add("hide");
+            }
         }
     } 
 }
