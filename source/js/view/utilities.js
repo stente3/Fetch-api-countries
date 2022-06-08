@@ -83,9 +83,22 @@ function comeBackButton(){
     })
 }
 
+/* Put points for every 3 strings */
 function dots(number){
     number = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
     return number;
 }
+
+/* Sort data */
+function sortCountries(a,b){
+    if(a.name.common < b.name.common){
+        return -1;
+    }
+    if(a.name.common > b.name.common){
+        return 1;
+    }
+    return 0;
+}
+
 // Exports
-export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton, dots };
+export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton, dots, sortCountries };

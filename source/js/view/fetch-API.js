@@ -2,7 +2,7 @@
 import { showFooter, moreCountries } from "./more-countries.js";
 import { search } from "./seacher.js";
 import { detailsCountry } from "./details.js";
-import { startLoader, endLoader, dots } from "./utilities.js";
+import { startLoader, endLoader, dots, sortCountries } from "./utilities.js";
 
 // Variables
 let mainContent = document.querySelector(".main");
@@ -17,9 +17,13 @@ function fetchApi(){
     fetch(url)
         .then(response => response.json())
         .then(data => {
+            // Sort data
+            data.sort((a,b) => sortCountries(a,b))
+
+            createCards(data, 0, currentNumber);
+
             // Hides the loading logo
             endLoader()
-            createCards(data, 0, currentNumber);
             showFooter();
             moreCountries(data);
             search(data);
