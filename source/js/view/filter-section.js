@@ -40,13 +40,13 @@ function fetchApiregions(region){
     fetch(url)
         .then(response => response.json())
         .then(data => {
+            // Hides the loading logo
+            endLoader()
             // Sort data
             data.sort((a,b) => sortCountries(a,b))
 
             rmMainSection();
             createCards(data, 0, data.length);
-            // Hides the loading logo
-            endLoader()
             search(data);
         })
 }
