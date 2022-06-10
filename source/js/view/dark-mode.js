@@ -51,4 +51,4 @@ function localDarkMode(){
 }
 
 // Exports 
-export { listener, localDarkMode };
+export { filterSection, listener, localDarkMode };

@@ -151,4 +151,4 @@ async function borders(countries){
 }
 
 // Exports
-export { detailsCountry, fetchByCcn3 }
+export { detailsCountry, fetchByCcn3, body }
