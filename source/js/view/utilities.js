@@ -74,12 +74,13 @@ function endLoader(){
 }
 
 /* To come back to main menu */
-function comeBackButton(){
+function comeBackButton(positionY){
     let backButton = document.querySelector(".backButton");
     let containerDetails = document.querySelector(".containerDetails");
     backButton.addEventListener("click", () =>{
         containerDetails.remove();
         showMainContent();
+        scrollY(positionY)
     })
 }
 
@@ -100,5 +101,10 @@ function sortCountries(a,b){
     return 0;
 }
 
+/* Scroll to Y position */
+function scrollY(positionY){
+    window.scrollTo(0, positionY);
+}
+
 // Exports
-export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton, dots, sortCountries };
+export { hideFilterSection, hideMainSection, rmMainSection, footer, hideArrow, startLoader, endLoader, clearSearcher, showFooter, comeBackButton, dots, sortCountries, scrollY };

@@ -7,10 +7,12 @@ let mainContent = document.querySelector(".main").children;
 let body = document.querySelector("body");
 let countryDetails = document.querySelector(".countryDetails");
 let loaderContainer;
+let positionY;
 
 function detailsCountry(firstN, lastN){
     for(let i = firstN; i < lastN; i++){
         mainContent[i].addEventListener("click", () =>{
+            positionY = window.scrollY;
             hideFilterSection();
             fetchByCcn3(mainContent[i].firstElementChild.id);
         })
@@ -128,7 +130,7 @@ async function createCardByCcn3(data){
     if(body.classList.contains("body-dark")){
         containerDetails.classList.add("containerDetails-dark");
     }
-    comeBackButton();
+    comeBackButton(positionY);
     containerDetails.classList.remove("hide");
 }
 
