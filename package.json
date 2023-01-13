@@ -20,7 +20,7 @@
     "url": "https://github.com/stente3/fetch-api-countries/issues"
   },
   "homepage": "https://github.com/stente3/fetch-api-countries#readme",
-  "dependencies": {
-    "node-sass": "^7.0.1"
+  "devDependencies": {
+    "node-sass": "^8.0.0"
   }
 }
