@@ -30,7 +30,7 @@
 Welcome to my project! This website allows you to explore different countries around the world. Using an API, you can easily access information about each country, including their population, capital city, and official language.
 
 To help narrow down your search, you can filter countries by continent. Additionally, a search bar is available to easily find a specific country.
-Once you find a country of interest, you can view detailed information about it, such as its history, culture, and geography.
+Once you find a country of interest, you can view detailed information about it.
 
 This website is also responsive, meaning it adapts to different screen sizes for a seamless user experience. Start exploring the world today!
 ### Built With
