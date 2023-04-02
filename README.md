@@ -27,22 +27,27 @@
 
 ![alt text](https://github.com/stente3/Fetch-api-countries/blob/main/source/designs/main.png)
 
-This is a challenge taken from the "Frontend Mentor" website, it was made with the aim of consolidating my front-end skills.
+Welcome to my project! This website allows you to explore different countries around the world. Using an API, you can easily access information about each country, including their population, capital city, and official language.
 
+To help narrow down your search, you can filter countries by continent. Additionally, a search bar is available to easily find a specific country.
+Once you find a country of interest, you can view detailed information about it, such as its history, culture, and geography.
+
+This website is also responsive, meaning it adapts to different screen sizes for a seamless user experience. Start exploring the world today!
 ### Built With
 
-* [HTML5](https://developer.mozilla.org/en/docs/Web/HTML)
 * [DOM](https://lenguajejs.com/javascript/dom/que-es/#:~:text=En%20Javascript%2C%20cuando%20nos%20referimos,de%20texto%2C%20etc...)
 * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [SASS](https://sass-lang.com/documentation)
-* [Mobile frist](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first)
-* [Responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-* [Relative Units](https://www.w3schools.com/cssref/css_units.asp)
+* [HTML5](https://developer.mozilla.org/en/docs/Web/HTML)
 * [Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
 * [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
-* [JavaScript Events](https://developer.mozilla.org/en-US/docs/Web/Events)
-* [JavaScript LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* [Mobile frist](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first)
+* [Relative Units](https://www.w3schools.com/cssref/css_units.asp)
+* [JavaScript Events](https://developer.mozilla.org/en-US/docs/Web/Events)
+* [Responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+* [JavaScript LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
 
 
 ## Getting Started
