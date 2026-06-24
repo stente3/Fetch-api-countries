@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 /* Body */
 .body-dark{
     transition: all .2s ease;
@@ -19,7 +21,7 @@
 /* Searcher Section */
 .filter-section--dark{
     .filter-section__searcher{
-        background-image: url("../assets/img/search-dark-mode.svg");
+        background-image: url("/assets/img/search-dark-mode.svg");
         background-color: $dark-blue;
         color: $white;
         box-shadow: none;
@@ -58,4 +60,3 @@
         background-color: $dark-blue;
     }
 }
-

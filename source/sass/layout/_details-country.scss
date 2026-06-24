@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 /* Button for come back */
 .backButton{
     display: flex;
@@ -99,4 +101,3 @@
         gap: 5vw;
     }
 }
-
