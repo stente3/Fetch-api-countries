@@ -1,7 +1,7 @@
 // Imports
 import { comeBackButton, hideFilterSection, dots } from "./utilities.js";
 import { travelBetweenCountries } from "./travel-across-borders.js";
-import { getCountryByCode } from "./fetch-API.js";
+import { formatListValue, getCountryByCode, hasDisplayValue } from "./fetch-API.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;
@@ -9,6 +9,18 @@ let body = document.querySelector("body");
 let countryDetails = document.querySelector(".countryDetails");
 let loaderContainer;
 let positionY;
+
+function renderDetailRow(label, value, formatter = formatListValue) {
+    if (!hasDisplayValue(value)) {
+        return "";
+    }
+
+    return `
+        <p class="main__detail detail">
+            <span>${label}:</span> ${formatter(value)}
+        </p>
+    `;
+}
 
 function detailsCountry(firstN, lastN) {
     for (let i = firstN; i < lastN; i++) {
@@ -60,21 +72,11 @@ async function createCardByCcn3(data) {
                     <div class="container__information">
                         <h2 class="information__heading">${data.name.common}</h2>
                         <div class="information__main">
-                            <p class="main__detail detail">
-                                <span>Native Name:</span> ${data.name.official}
-                            </p>
-                            <p class="main__detail detail">
-                                <span>Population:</span> ${dots(data.population)}
-                            </p>
-                            <p class="main__detail detail">
-                                <span>Region:</span> ${data.region}
-                            </p>
-                            <p class="main__detail detail">
-                                <span>Sub Region:</span> ${data.subregion}
-                            </p>
-                            <p class="main__detail detail">
-                                <span>Capital:</span> ${data.capital}
-                            </p>
+                            ${renderDetailRow("Native Name", data.name.official)}
+                            ${renderDetailRow("Population", data.population, dots)}
+                            ${renderDetailRow("Region", data.region)}
+                            ${renderDetailRow("Sub Region", data.subregion)}
+                            ${renderDetailRow("Capital", data.capital)}
                         </div>
                         <div class="information__other">
 
@@ -93,7 +95,7 @@ async function createCardByCcn3(data) {
     body.appendChild(containerDetails);
 
     // To check if there are "languages" in the countries
-    if (Object.hasOwn(data, "languages")) {
+    if (Object.values(data.languages || {}).length > 0) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
@@ -104,7 +106,7 @@ async function createCardByCcn3(data) {
     }
 
     // To check if there are "currencies" in the countries
-    if (Object.hasOwn(data, "currencies")) {
+    if (Object.values(data.currencies || {}).length > 0) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
@@ -115,7 +117,7 @@ async function createCardByCcn3(data) {
     }
 
     // To check if there are "top level domain" in the countries
-    if (Object.hasOwn(data, "tld")) {
+    if ((data.tld || []).length > 0) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
         details.classList.add("other__detail", "detail");
@@ -126,7 +128,7 @@ async function createCardByCcn3(data) {
     }
 
     // To check if there are borders in the countries
-    if (Object.hasOwn(data, "borders")) {
+    if ((data.borders || []).length > 0) {
         await borders(data.borders);
     } else {
         let borders = document.querySelector(".container__borders");

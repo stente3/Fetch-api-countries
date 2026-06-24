@@ -15,22 +15,52 @@ const REST_COUNTRIES_API_BASE_URL =
     "https://api.restcountries.com/countries/v5";
 const REST_COUNTRIES_API_KEY = import.meta.env.VITE_RESTCOUNTRIES_API_KEY;
 
+function hasDisplayValue(value) {
+    if (Array.isArray(value)) {
+        return value.length > 0;
+    }
+
+    return value !== undefined && value !== null && value !== "";
+}
+
+function formatListValue(value) {
+    if (Array.isArray(value)) {
+        return value.filter(Boolean).join(", ");
+    }
+
+    return value ?? "";
+}
+
+function renderInformationParagraph(label, value, formatter = formatListValue) {
+    if (!hasDisplayValue(value)) {
+        return "";
+    }
+
+    return `
+            <p class="information__paragraph">
+                <span>${label}: </span> ${formatter(value)}
+            </p>
+    `;
+}
+
 function normalizeCountry(country) {
     return {
         ...country,
         cca3: country?.codes?.alpha_3 || "",
         flags: {
-            svg: country?.flag?.url_svg || "",
-            png: country?.flag?.url_png || "",
+            svg: country?.flag?.url_svg || null,
+            png: country?.flag?.url_png || null,
         },
         name: {
-            common: country?.names?.common || "",
-            official: country?.names?.official || "",
+            common: country?.names?.common || null,
+            official: country?.names?.official || null,
         },
-        capital: (country?.capitals || []).map((capital) => capital?.name).filter(Boolean),
-        population: country?.population || 0,
-        region: country?.region || "",
-        subregion: country?.subregion || "",
+        capital: (country?.capitals || [])
+            .map((capital) => capital?.name)
+            .filter(Boolean),
+        population: country?.population ?? null,
+        region: country?.region || null,
+        subregion: country?.subregion || null,
         borders: country?.borders || [],
         tld: country?.tlds || [],
         currencies: (country?.currencies || []).reduce((accumulator, currency) => {
@@ -53,7 +83,13 @@ function normalizeCountry(country) {
 }
 
 function normalizeCountries(countries) {
-    return countries.map(normalizeCountry);
+    return countries
+        .map(normalizeCountry)
+        .filter(
+            (country) =>
+                hasDisplayValue(country?.flags?.svg) &&
+                hasDisplayValue(country?.name?.common)
+        );
 }
 
 function setCountriesStore(countries) {
@@ -163,15 +199,9 @@ function createCards(data, firstN, lastN) {
         <div class="information">
             <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
-            <p class="information__paragraph">
-                <span>Population: </span> ${dots(data[i].population)}
-            </p>
-            <p class="information__paragraph">
-                <span>Region: </span> ${data[i].region}
-            </p>
-            <p class="information__paragraph">
-                <span>Capital: </span>${data[i].capital}
-            </p>
+            ${renderInformationParagraph("Population", data[i].population, dots)}
+            ${renderInformationParagraph("Region", data[i].region)}
+            ${renderInformationParagraph("Capital", data[i].capital)}
         </div>
             `;
     }
@@ -191,4 +221,7 @@ export {
     getStoredCountries,
     getCountryByCode,
     renderCountries,
+    hasDisplayValue,
+    formatListValue,
+    renderInformationParagraph,
 };

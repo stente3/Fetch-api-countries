@@ -1,6 +1,11 @@
 // Imports
 import { rmMainSection, clearSearcher, dots } from "./utilities.js";
-import { createCards, mainContent } from "./fetch-API.js";
+import {
+    createCards,
+    mainContent,
+    hasDisplayValue,
+    renderInformationParagraph,
+} from "./fetch-API.js";
 import { showFooter } from "./more-countries.js";
 import { fetchApiregions, defaultOption } from "./filter-section.js";
 import { detailsCountry } from "./details.js";
@@ -24,7 +29,7 @@ function search(data){
             for(let i=0; i < data.length; i++){
                 // Make in capitalize the first letter of the paragraph 
                 let palabra = e.target.value[0].toUpperCase() + e.target.value.slice(1);
-                if(data[i].name.common.includes(palabra)){
+                if(hasDisplayValue(data[i]?.name?.common) && data[i].name.common.includes(palabra)){
                     // If one or more countries coincide with the search carried out, the card of each matching country is created
                     createCard(data, i);
                 } 
@@ -45,15 +50,9 @@ function createCard(data, i){
         <div class="information">
             <h3 class="information__heading"> ${data[i].name.common} 
             </h3>
-            <p class="information__paragraph">
-                <span>Population: </span> ${dots(data[i].population)}
-            </p>
-            <p class="information__paragraph">
-                <span>Region: </span> ${data[i].region}
-            </p>
-            <p class="information__paragraph">
-                <span>Capital: </span>${data[i].capital}
-            </p>
+            ${renderInformationParagraph("Population", data[i].population, dots)}
+            ${renderInformationParagraph("Region", data[i].region)}
+            ${renderInformationParagraph("Capital", data[i].capital)}
     </div>
             `;
 }
