@@ -1,6 +1,7 @@
 // Imports
 import { comeBackButton, hideFilterSection, dots } from "./utilities.js";
 import { travelBetweenCountries } from "./travel-across-borders.js";
+import { getCountryByCode } from "./fetch-API.js";
 
 // Variables
 let mainContent = document.querySelector(".main").children;
@@ -9,33 +10,39 @@ let countryDetails = document.querySelector(".countryDetails");
 let loaderContainer;
 let positionY;
 
-function detailsCountry(firstN, lastN){
-    for(let i = firstN; i < lastN; i++){
-        mainContent[i].addEventListener("click", () =>{
+function detailsCountry(firstN, lastN) {
+    for (let i = firstN; i < lastN; i++) {
+        mainContent[i].addEventListener("click", () => {
             positionY = window.scrollY;
             hideFilterSection();
             fetchByCcn3(mainContent[i].firstElementChild.id);
-        })
+        });
     }
 }
 
-function fetchByCcn3(ccn3){
-    let url = `https://restcountries.com/v3.1/alpha/${ccn3}`
+async function fetchByCcn3(ccn3) {
     // Start Loader
     loaderContainer = document.createElement("div");
     loaderContainer.classList.add("loader");
     body.appendChild(loaderContainer);
-    // Fetch API
-    fetch(url)
-        .then(response => response.json())
-        .then(async data =>{
-            await createCardByCcn3(data)
-            //End Loader
-            loaderContainer.remove("loader");
-        }) 
+
+    try {
+        const country = getCountryByCode(ccn3);
+
+        if (!country) {
+            throw new Error(`Country with code ${ccn3} was not found in local cache.`);
+        }
+
+        await createCardByCcn3([country]);
+    } catch (error) {
+        console.error(error);
+    } finally {
+        //End Loader
+        loaderContainer.remove("loader");
+    }
 }
 
-async function createCardByCcn3(data){
+async function createCardByCcn3(data) {
     let containerDetails = document.createElement("section");
     containerDetails.classList.add("containerDetails", "hide");
     data = data[0];
@@ -82,52 +89,52 @@ async function createCardByCcn3(data){
                     </div>
                 </div>
             </article>
-    `
-    body.appendChild(containerDetails)
+    `;
+    body.appendChild(containerDetails);
 
     // To check if there are "languages" in the countries
-    if(Object.hasOwn(data, "languages")){
+    if (Object.hasOwn(data, "languages")) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
-        details.innerHTML =  `
+        details.innerHTML = `
             <span>Languages: </span> ${Object.values(data.languages).join(", ")}
-        `
+        `;
         informationOther.prepend(details);
     }
 
     // To check if there are "currencies" in the countries
-    if(Object.hasOwn(data, "currencies")){
+    if (Object.hasOwn(data, "currencies")) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
         details.classList.add("other__details", "detail");
-        details.innerHTML =  `
+        details.innerHTML = `
             <span>Currencies: </span> ${Object.values(data.currencies)[0].name}
-        `
+        `;
         informationOther.prepend(details);
     }
 
     // To check if there are "top level domain" in the countries
-    if(Object.hasOwn(data, "tld")){
+    if (Object.hasOwn(data, "tld")) {
         let informationOther = document.querySelector(".information__other");
         let details = document.createElement("p");
-        details.classList.add("other__detail","detail");
+        details.classList.add("other__detail", "detail");
         details.innerHTML = `
             <span>Top Level Domain:</span> ${data.tld[0]}
-        `
+        `;
         informationOther.prepend(details);
     }
 
     // To check if there are borders in the countries
-    if(Object.hasOwn(data, "borders")){
-        await borders(data.borders)
-    } else{
+    if (Object.hasOwn(data, "borders")) {
+        await borders(data.borders);
+    } else {
         let borders = document.querySelector(".container__borders");
         borders.remove();
     }
 
     // To put dark mode
-    if(body.classList.contains("body-dark")){
+    if (body.classList.contains("body-dark")) {
         containerDetails.classList.add("containerDetails-dark");
     }
     comeBackButton(positionY);
@@ -135,22 +142,24 @@ async function createCardByCcn3(data){
 }
 
 // To create every border the country has
-async function borders(countries){
+async function borders(countries) {
     let container = document.querySelector(".borders__container");
     for (let i = 0; i < countries.length; i++) {
-        await fetch(`https://restcountries.com/v3.1/alpha/${countries[i]}`)
-            .then(response => response.json())
-            .then(data =>{
-                // To create each individual border
-                let country = document.createElement("div");
-                country.classList.add("borders__country", "button");
-                country.textContent = data[0].name.common;
-                country.id = countries[i];
-                container.appendChild(country);
-                travelBetweenCountries(country);
-            })
+        const countryData = getCountryByCode(countries[i]);
+
+        if (!countryData) {
+            continue;
+        }
+
+        // To create each individual border
+        let country = document.createElement("div");
+        country.classList.add("borders__country", "button");
+        country.textContent = countryData.name.common;
+        country.id = countries[i];
+        container.appendChild(country);
+        travelBetweenCountries(country);
     }
 }
 
 // Exports
-export { detailsCountry, fetchByCcn3, body }
+export { detailsCountry, fetchByCcn3, body };

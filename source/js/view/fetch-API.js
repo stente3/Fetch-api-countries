@@ -8,30 +8,151 @@ import { startLoader, endLoader, dots, sortCountries } from "./utilities.js";
 let mainContent = document.querySelector(".main");
 let currentNumber = 20;
 let countriesLength;
+let storedCountries = [];
+let countriesByCode = new Map();
+const REST_COUNTRIES_API_BASE_URL =
+    import.meta.env.VITE_RESTCOUNTRIES_API_BASE_URL ||
+    "https://api.restcountries.com/countries/v5";
+const REST_COUNTRIES_API_KEY = import.meta.env.VITE_RESTCOUNTRIES_API_KEY;
 
-// Functions
-function fetchApi(){
-    let url = "https://restcountries.com/v3.1/all";
-    // Shows the loading logo
-    startLoader();
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Hides the loading logo
-            endLoader()
-            // Sort data
-            data.sort((a,b) => sortCountries(a,b))
+function normalizeCountry(country) {
+    return {
+        ...country,
+        cca3: country?.codes?.alpha_3 || "",
+        flags: {
+            svg: country?.flag?.url_svg || "",
+            png: country?.flag?.url_png || "",
+        },
+        name: {
+            common: country?.names?.common || "",
+            official: country?.names?.official || "",
+        },
+        capital: (country?.capitals || []).map((capital) => capital?.name).filter(Boolean),
+        population: country?.population || 0,
+        region: country?.region || "",
+        subregion: country?.subregion || "",
+        borders: country?.borders || [],
+        tld: country?.tlds || [],
+        currencies: (country?.currencies || []).reduce((accumulator, currency) => {
+            if (currency?.code) {
+                accumulator[currency.code] = currency;
+            }
 
-            createCards(data, 0, currentNumber);
-            showFooter();
-            moreCountries(data);
-            search(data);
-            countriesLength = data.length;
-        })
+            return accumulator;
+        }, {}),
+        languages: (country?.languages || []).reduce((accumulator, language, index) => {
+            const key = language?.bcp47 || language?.name || `language_${index}`;
+
+            if (language?.name) {
+                accumulator[key] = language.name;
+            }
+
+            return accumulator;
+        }, {}),
+    };
 }
 
-function createCards(data, firstN, lastN){
-    for(let i = firstN; i < lastN; i++){
+function normalizeCountries(countries) {
+    return countries.map(normalizeCountry);
+}
+
+function setCountriesStore(countries) {
+    storedCountries = countries;
+    countriesByCode = new Map(
+        countries.map((country) => [country.cca3?.toUpperCase(), country])
+    );
+}
+
+function getStoredCountries() {
+    return storedCountries;
+}
+
+function getCountryByCode(code) {
+    if (!code) {
+        return undefined;
+    }
+
+    return countriesByCode.get(code.toUpperCase());
+}
+
+function getAuthorizationHeaders() {
+    if (!REST_COUNTRIES_API_KEY) {
+        throw new Error(
+            "Missing VITE_RESTCOUNTRIES_API_KEY. Add it to your .env file."
+        );
+    }
+
+    return {
+        Authorization: `Bearer ${REST_COUNTRIES_API_KEY}`,
+    };
+}
+
+async function fetchRestCountries(endpoint) {
+    const response = await fetch(`${REST_COUNTRIES_API_BASE_URL}${endpoint}`, {
+        headers: getAuthorizationHeaders(),
+    });
+    const payload = await response.json();
+
+    if (!response.ok) {
+        const errorMessage =
+            payload?.errors?.[0]?.message ||
+            "Failed to fetch data from Rest Countries.";
+        throw new Error(errorMessage);
+    }
+
+    return payload?.data || {};
+}
+
+async function fetchAllCountries() {
+    const limit = 100;
+    let offset = 0;
+    let countries = [];
+    let hasMore = true;
+
+    while (hasMore) {
+        const data = await fetchRestCountries(`?limit=${limit}&offset=${offset}`);
+        const currentCountries = data?.objects || [];
+        const metadata = data?.meta || {};
+
+        countries = countries.concat(normalizeCountries(currentCountries));
+        hasMore = Boolean(metadata.more);
+        offset += limit;
+    }
+
+    return countries;
+}
+
+function renderCountries(data) {
+    createCards(data, 0, currentNumber);
+    showFooter();
+    moreCountries(data);
+    search(data);
+    countriesLength = data.length;
+}
+
+// Functions
+async function fetchApi() {
+    // Shows the loading logo
+    startLoader();
+
+    try {
+        const data =
+            storedCountries.length > 0 ? storedCountries : await fetchAllCountries();
+        setCountriesStore(data);
+        // Hides the loading logo
+        endLoader();
+        // Sort data
+        data.sort((a, b) => sortCountries(a, b));
+
+        renderCountries(data);
+    } catch (error) {
+        endLoader();
+        console.error(error);
+    }
+}
+
+function createCards(data, firstN, lastN) {
+    for (let i = firstN; i < lastN; i++) {
         let card = document.createElement("div");
         card.classList.add("card");
         mainContent.appendChild(card);
@@ -57,6 +178,17 @@ function createCards(data, firstN, lastN){
     detailsCountry(firstN, lastN);
 }
 
-
 // Exports
-export { mainContent, countriesLength, fetchApi, createCards, startLoader, endLoader };
+export {
+    mainContent,
+    countriesLength,
+    fetchApi,
+    createCards,
+    startLoader,
+    endLoader,
+    fetchRestCountries,
+    normalizeCountries,
+    getStoredCountries,
+    getCountryByCode,
+    renderCountries,
+};

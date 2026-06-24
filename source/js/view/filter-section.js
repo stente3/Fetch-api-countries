@@ -1,7 +1,13 @@
 // Imports
 import { rmMainSection, sortCountries } from "./utilities.js";
 import { search, clearSearcher } from "./seacher.js";
-import { fetchApi, createCards, startLoader, endLoader } from "./fetch-API.js";
+import {
+    fetchApi,
+    createCards,
+    startLoader,
+    endLoader,
+    getStoredCountries,
+} from "./fetch-API.js";
 
 // Variables
 let filter = document.querySelector(".filter__container");
@@ -10,16 +16,16 @@ let optionsContainer = document.querySelectorAll(".select_ul .option");
 let currentRegion;
 
 // Function
-function optionsFunctionality(){
-    filter.addEventListener("click", ()=> {
+function optionsFunctionality() {
+    filter.addEventListener("click", () => {
         filter.classList.toggle("active");
     });
-    optionsContainer.forEach(element =>{
-        element.addEventListener("click", (element) =>{
-            if(element.target.textContent.trim() != defaultOption.textContent){
-                if(element.target.textContent.trim() != "All"){
+    optionsContainer.forEach((element) => {
+        element.addEventListener("click", (element) => {
+            if (element.target.textContent.trim() != defaultOption.textContent) {
+                if (element.target.textContent.trim() != "All") {
                     currentRegion = element.target.textContent.toLowerCase().trim();
-                    fetchApiregions(currentRegion)
+                    fetchApiregions(currentRegion);
                 } else {
                     rmMainSection();
                     fetchApi();
@@ -27,30 +33,34 @@ function optionsFunctionality(){
             }
             defaultOption.textContent = element.target.textContent.trim();
             clearSearcher();
-        })
-    })
+        });
+    });
 }
 
 // Shows all the countries of the chosen region
-function fetchApiregions(region){
-    let url = `https://restcountries.com/v3.1/region/${region}`;
-    // Shows the loading logo        
+async function fetchApiregions(region) {
+    const normalizedRegion = region === "america" ? "Americas" : region;
+    // Shows the loading logo
     rmMainSection();
     startLoader();
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Hides the loading logo
-            endLoader()
-            // Sort data
-            data.sort((a,b) => sortCountries(a,b))
 
-            rmMainSection();
-            createCards(data, 0, data.length);
-            search(data);
-        })
+    try {
+        const countries = getStoredCountries().filter(
+            (country) => country.region?.toLowerCase() === normalizedRegion.toLowerCase()
+        );
+        // Hides the loading logo
+        endLoader();
+        // Sort data
+        countries.sort((a, b) => sortCountries(a, b));
+
+        rmMainSection();
+        createCards(countries, 0, countries.length);
+        search(countries);
+    } catch (error) {
+        endLoader();
+        console.error(error);
+    }
 }
-
 
 // Exports
 export { optionsFunctionality, defaultOption, fetchApiregions };

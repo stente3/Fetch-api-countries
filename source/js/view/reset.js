@@ -1,7 +1,7 @@
 //Imports
 import { rmMainSection, clearSearcher } from "./utilities.js";
 import { defaultOption } from "./filter-section.js";
-import { fetchApi, mainContent } from "./fetch-API.js";
+import { fetchApi, getStoredCountries, mainContent, renderCountries } from "./fetch-API.js";
 import { body } from "./details.js";
 import { filterSection } from "./dark-mode.js";
 
@@ -16,6 +16,13 @@ function resetPage(){
     rmMainSection();
     defaultOption.textContent = "Filter by Region";
     clearSearcher();
+    const countries = getStoredCountries();
+
+    if (countries.length > 0) {
+        renderCountries(countries);
+        return;
+    }
+
     fetchApi();
 }
 
